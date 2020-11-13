@@ -5,6 +5,7 @@ ENV TZ=${TZ}
 
 RUN apk update \
         && apk add tzdata \
+        && apk openntpd \
         && apk add busybox-extras
 
 RUN cp /usr/share/zoneinfo/${TZ} /etc/localtime
