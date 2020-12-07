@@ -1,5 +1,6 @@
 FROM postgres:12.4-alpine
 
+ARG MAX_CONNECTIONS=200
 ARG TZ
 ENV TZ=${TZ}
 
@@ -16,4 +17,4 @@ COPY ./tzdata/tzdata/tzdata-latest.tar.gz /tmp/tzdata.tar.gz
 
 CMD "java -jar /tmp/tzupdater.jar -f -l file:///tmp/tzdata.tar.gz"
 
-ENTRYPOINT date
+ENTRYPOINT ["postgres", "-c 'max_connections=${MAX_CONNECTIONS}'"]
