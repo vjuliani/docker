@@ -16,5 +16,3 @@ COPY ./tzdata/tzupdater-2.3.2/tzupdater.jar /tmp/tzupdater.jar
 COPY ./tzdata/tzdata/tzdata-latest.tar.gz /tmp/tzdata.tar.gz
 
 CMD "java -jar /tmp/tzupdater.jar -f -l file:///tmp/tzdata.tar.gz"
-
-ENTRYPOINT ["postgres", "-c 'max_connections=${MAX_CONNECTIONS}'"]
